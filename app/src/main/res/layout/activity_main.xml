@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCDCDC"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:background="#B6B6B3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            >
+        <androidx.appcompat.widget.Toolbar
+            app:title="Hello Japan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpgTable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp" />
+
+    <LinearLayout
+        android:background="@drawable/bg_btn_switch"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:background="@drawable/bg_btn_switch"
+            android:id="@+id/btnHira"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hiragana"
+            android:textAllCaps="false" />
+
+        <Button
+            android:background="@drawable/bg_btn_switch"
+            android:id="@+id/btnKata"
+            android:textAllCaps="false"
+            android:text="Katakana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
