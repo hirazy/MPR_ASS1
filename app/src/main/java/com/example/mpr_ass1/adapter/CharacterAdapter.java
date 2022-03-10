@@ -59,7 +59,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.MyVi
                 case "o":
                     holder.img.setImageResource(R.mipmap.o);
                     break;
-
                 case "ka":
                     holder.img.setImageResource(R.mipmap.ka);
                     break;
@@ -182,6 +181,9 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.MyVi
                     break;
                 case "n":
                     holder.img.setImageResource(R.mipmap.n);
+                    break;
+                case "":
+                    holder.img.setImageResource(R.mipmap.hihihih);
                     break;
             }
         }
@@ -325,7 +327,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.MyVi
                 case "n":
                     holder.img.setImageResource(R.mipmap.n1);
                     break;
-                default:
+                case "":
+                    holder.img.setImageResource(R.mipmap.hihihih);
                     break;
             }
         }

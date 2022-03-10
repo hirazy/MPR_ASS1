@@ -1,13 +1,18 @@
 package com.example.mpr_ass1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mpr_ass1.adapter.ViewPagerTableAdapter;
@@ -19,10 +24,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnHira, btnKata;
+    LinearLayout btnHira, btnKata;
     MediaPlayer mediaPlayer;
     ViewPager2 viewPager2;
     ViewPagerTableAdapter tableAdapter;
+    TextView tvHira, tvKata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +37,45 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void init(){
         btnHira = findViewById(R.id.btnHira);
         btnKata = findViewById(R.id.btnKata);
         viewPager2 = findViewById(R.id.vpgTable);
+        tvHira = findViewById(R.id.tvHira);
+        tvKata = findViewById(R.id.tvKata);
 
         mediaPlayer = new MediaPlayer();
 
         tableAdapter = new ViewPagerTableAdapter(this);
 
         viewPager2.setAdapter(tableAdapter);
+        viewPager2.setOnTouchListener((@SuppressLint("ClickableViewAccessibility") View arg0, MotionEvent arg1) -> true);
 
         viewPager2.setOffscreenPageLimit(2);
+
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 0){
+                    onClickHira();
+                }
+                else if (position == 1){
+                    onClickKata();
+                }
+                super.onPageSelected(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+            }
+        });
 
         btnHira.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +94,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickHira(){
+        tvHira.setTextColor(ContextCompat.getColor(this, R.color.isSelected));
+        tvKata.setTextColor(ContextCompat.getColor(this, R.color.white));
         viewPager2.setCurrentItem(0);
     }
 
     public void onClickKata(){
+        tvKata.setTextColor(ContextCompat.getColor(this, R.color.isSelected));
+        tvHira.setTextColor(ContextCompat.getColor(this, R.color.white));
         viewPager2.setCurrentItem(1);
     }
 

@@ -10,4 +10,6 @@
 
     <color name="isEnabled">#ff0</color>
     <color name="isDisabled">#ff0</color>
+
+    <color name="isSelected">#E40C0C</color>
 </resources>
